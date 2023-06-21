@@ -1,0 +1,127 @@
+[info]: name:  pa561.tsp , dim:  561 , format:  LOWER_DIAG_ROW
+[info]: position:
+ [[  0. 678. 733. ...  69.  34.  34.]
+ [  0. 543. 546. ... 443. 443. 491.]]
+[info]: dis_matrix:
+ [[  0.           0.           0.         ...   0.           0.
+    0.        ]
+ [  0.           0.          55.08175742 ... 617.15557196 651.71773031
+  646.0959681 ]
+ [  0.          55.08175742   0.         ... 671.94121767 706.547946
+  701.16046666]
+ ...
+ [  0.         617.15557196 671.94121767 ...   0.          35.
+   59.40538696]
+ [  0.         651.71773031 706.547946   ...  35.           0.
+   48.        ]
+ [  0.         646.0959681  701.16046666 ...  59.40538696  48.
+    0.        ]]
+[info]: edge_weight:
+ [[  0.   0.   0. ...   0.   0.   0.]
+ [  0.   0.  15. ... 100. 106. 108.]
+ [  0.  15.   0. ... 115. 121. 123.]
+ ...
+ [  0. 100. 115. ...   0.   6.  11.]
+ [  0. 106. 121. ...   6.   0.   8.]
+ [  0. 108. 123. ...  11.   8.   0.]]
+[info] 10 generations completed.
+[info] 20 generations completed.
+[info] 30 generations completed.
+[info] 40 generations completed.
+[info] 50 generations completed.
+[info] 60 generations completed.
+[info] 70 generations completed.
+[info] 80 generations completed.
+[info] 90 generations completed.
+[info] 100 generations completed.
+[info] 110 generations completed.
+[info] 120 generations completed.
+[info] 130 generations completed.
+[info] 140 generations completed.
+[info] 150 generations completed.
+[info] 160 generations completed.
+[info] 170 generations completed.
+[info] 180 generations completed.
+[info] 190 generations completed.
+[info] 200 generations completed.
+[info] 210 generations completed.
+[info] 220 generations completed.
+[info] 230 generations completed.
+[info] 240 generations completed.
+[info] 250 generations completed.
+[info] 260 generations completed.
+[info] 270 generations completed.
+[info] 280 generations completed.
+[info] 290 generations completed.
+[info] 300 generations completed.
+[info] 310 generations completed.
+[info] 320 generations completed.
+[info] 330 generations completed.
+[info] 340 generations completed.
+[info] 350 generations completed.
+[info] 360 generations completed.
+[info] 370 generations completed.
+[info] 380 generations completed.
+[info] 390 generations completed.
+[info] 400 generations completed.
+[info] 410 generations completed.
+[info] 420 generations completed.
+[info] 430 generations completed.
+[info] 440 generations completed.
+[info] 450 generations completed.
+[info] 460 generations completed.
+[info] 470 generations completed.
+[info] 480 generations completed.
+[info] 490 generations completed.
+[info] 500 generations completed.
+[info] 510 generations completed.
+[info] 520 generations completed.
+[info] 530 generations completed.
+[info] 540 generations completed.
+[info] 550 generations completed.
+[info] 560 generations completed.
+[info] 570 generations completed.
+[info] 580 generations completed.
+[info] 590 generations completed.
+[info] 600 generations completed.
+[info] 610 generations completed.
+[info] 620 generations completed.
+[info] 630 generations completed.
+[info] 640 generations completed.
+[info] 650 generations completed.
+[info] 660 generations completed.
+[info] 670 generations completed.
+[info] 680 generations completed.
+[info] 690 generations completed.
+[info] 700 generations completed.
+[info] 710 generations completed.
+[info] 720 generations completed.
+[info] 730 generations completed.
+[info] 740 generations completed.
+[info] 750 generations completed.
+[info] 760 generations completed.
+[info] 770 generations completed.
+[info] 780 generations completed.
+[info] 790 generations completed.
+[info] 800 generations completed.
+[info] 810 generations completed.
+[info] 820 generations completed.
+[info] 830 generations completed.
+[info] 840 generations completed.
+[info] 850 generations completed.
+[info] 860 generations completed.
+[info] 870 generations completed.
+[info] 880 generations completed.
+[info] 890 generations completed.
+[info] 900 generations completed.
+[info] 910 generations completed.
+[info] 920 generations completed.
+[info] 930 generations completed.
+[info] 940 generations completed.
+[info] 950 generations completed.
+[info] 960 generations completed.
+[info] 970 generations completed.
+[info] 980 generations completed.
+[info] 990 generations completed.
+[info] 1000 generations completed.
+experinced time:  653.7354598045349  s.

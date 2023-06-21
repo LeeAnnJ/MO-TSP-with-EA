@@ -97,7 +97,10 @@ class Permutation_GeneOperator(object):
     # 位移变异
     def displacement_mutation(self,gene):
         start = np.random.randint(self.V)
-        end = np.random.randint(start+1,self.V+1)
+        if start>0:
+            end = np.random.randint(start+1,self.V+1)
+        else:
+            end = np.random.randint(self.V-1)
         part = gene[start:end]
         mutated_gene = np.concatenate([gene[:start],gene[end:self.V]])
         insert_pos = np.random.randint(len(mutated_gene))
