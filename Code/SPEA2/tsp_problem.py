@@ -11,7 +11,7 @@ class TspProblem(object):
     def __init__(self):
         pass 
 
-    def __init__ (self, M, V, dis_matrix, edge_weight):
+    def __init__ (self, M=0, V=0, dis_matrix=[], edge_weight=[]):
         self.dimention = V
         self.func_num = M
         if V>0:
