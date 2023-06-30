@@ -11,25 +11,25 @@ from genetic_operator import Permutation_GeneOperator as GNO
 
 
 class SPEA2():
-    max_iter = ARG.GEN
-    V = 0 # 维度
-    pop = ARG.POP # 种群数量
+    max_iter = ARG.GEN     # 最大迭代次数
+    V = 0                  # 维度
+    pop = ARG.POP          # 种群数量
     problem = TspProblem() # TSP问题的目标值计算和随机解生成
-    gene_op = None # 个体基因的交叉变异操作
-    result_folder= "" # 结果保存的位置
-    population = []                    #父代种群
-    archive = []                       #存档集合
-    popu_arch = []                     #合并后的父代与存档集合种群
-    fronts = []                        #Pareto前沿面
-    KNN = []                           #最近领域距离，K-th
-    rank = []#np.zeros(self.pop)       #非支配排序等级 
-    S = []                             # 个体 i的 Strength Value
-    D = []                             # density，距离度量
-    R = []                             # 支配关系度量
-    F = []                             # 适应度
-    objectives = []                    #目标函数值       
-    np = []                            #该个体支配的其它个体数目
-    set = []                           # 被支配的个体集
+    gene_op = None         # 个体基因的交叉变异操作
+    result_folder= ""      # 结果保存的位置
+    population = []        # 父代种群
+    archive = []           # 存档集合
+    popu_arch = []         # 合并后的父代与存档集合种群
+    fronts = []            # Pareto前沿面
+    KNN = []               # 最近领域距离，K-th
+    rank = []              # 非支配排序等级 
+    S = []                 # 个体 i的 Strength Value
+    D = []                 # density，距离度量
+    R = []                 # 支配关系度量
+    F = []                 # 适应度
+    objectives = []        # 目标函数值       
+    np = []                # 该个体支配的其它个体数目
+    set = []               # 被支配的个体集
 
 
     def __init__(self, V, problem:TspProblem, result_folder):
@@ -38,6 +38,22 @@ class SPEA2():
         self.problem = problem
         self.gene_op = GNO(V)
         self.result_folder = result_folder
+        self.clear_old()
+    
+    def clear_old(self):
+        self.population = []
+        self.archive = []
+        self.popu_arch = []
+        self.fronts = []
+        self.KNN = []
+        self.rank = []
+        self.S = []
+        self.D = []
+        self.R = []
+        self.F = []
+        self.objectives = []
+        self.np = []
+        self.set = []
 
 
     # 保存当前结果画图 支配前沿     
@@ -100,7 +116,7 @@ class SPEA2():
         cal_fitness(self,2*self.pop)
         update(self)
         for i in range(1,self.max_iter+1):
-            print(f"[info] iteration {i}.")
+            # print(f"[info] iteration {i}.")
             selection(self)
             self.population = self.gene_op.crossover_option(self.population)
             self.population = self.gene_op.mutate_option(self.population)
@@ -127,7 +143,7 @@ def init_Population(spea:SPEA2):
 # Population和 Archive合并,pop*2
 def popu_archive(spea:SPEA2):                     
     spea.popu_arch = np.zeros((2*spea.pop,spea.V))
-    print("[info] population's length",len(spea.population))
+    # print("[info] population's length",len(spea.population))
     
     for i in range(spea.pop):
         spea.popu_arch[i][:] = spea.population[i]

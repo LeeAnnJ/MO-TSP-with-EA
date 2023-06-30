@@ -1,6 +1,6 @@
 # --- 文件位置 ---
 DATA_FOLDER = "../../Data/" # 数据文件夹
-DATA_FILE = ["pa561.tsp"] # ["bayg29.tsp","bays29.tsp","dantzig42.tsp","gr120.tsp","pa561.tsp"]
+DATA_FILE = ["gr120.tsp","pa561.tsp"] # ["bayg29.tsp","bays29.tsp","dantzig42.tsp","gr120.tsp","pa561.tsp"]
 RESULT_FOLDER = "../../result/NSGA-II/" #结果文件夹
 
 # ---基本参数设置----

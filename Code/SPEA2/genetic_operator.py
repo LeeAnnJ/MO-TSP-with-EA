@@ -47,7 +47,7 @@ class Permutation_GeneOperator(object):
             child.append(child_1)
             child.append(child_2)
             num += 2
-        print("[info] crossover finish.")
+        # print("[info] crossover finish.")
         return child
     
     
