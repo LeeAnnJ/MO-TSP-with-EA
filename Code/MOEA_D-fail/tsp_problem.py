@@ -4,14 +4,20 @@ from moead_framework.problem.problem import Problem
 
 
 class TspProblem(Problem):
-    # M:目标函数个数 V:决策变量个数
+    dimention = 0 # 决策变量个数 
+    func_num = 2 # 目标函数个数
+    distance = [] # 节点间距离
+    edge_weight = [] # 边权重
+
     def __init__(self):
         self.V = 0
         super().__init__(objective_number=2)
 
-    def __init__ (self,M=2,V=0,weight_list=np.array([])):
-        self.V = V
-        self.weight_list = weight_list ## 权重向量
+    def __init__ (self,M=2,V=0, dis_matrix=np.array([]), edge_weight=np.array([])):
+        self.dimention = V
+        self.func_num = M
+        self.distance = dis_matrix # 节点距离
+        self.edge_weight = edge_weight # 边权重
         super().__init__(objective_number=M)
     
     def f(self, function_id, decision_vector):
@@ -21,19 +27,15 @@ class TspProblem(Problem):
             raise TypeError("The expected type of `decision_vector` is `np.ndarray`")
         
         fit = 0
+        # print("[info]: decision vector in f: ",decision_vector)
         if function_id==0: ## 路径长度
             for i in range(0,self.V-1):
-                # print("[info]: decision vector in f: ",decision_vector)
-                line = int(self.V*(decision_vector[i]-1) + decision_vector[i+1]-1)
-                fit += self.weight_list[line][0]
-            line = int(self.V*(decision_vector[self.V-1]-1) + decision_vector[i+1]-1)
-            fit += self.weight_list[line][0]
+                fit += self.distance[int(decision_vector[i])][int(decision_vector[i+1])]
+            fit += self.distance[int(decision_vector[self.dimention-1])][int(decision_vector[0])]
         elif function_id==1: ## 边权重
             for i in range(0,self.V-1):
-                line = int(self.V*(decision_vector[i]-1) + decision_vector[i+1]-1)
-                fit += self.weight_list[line][1]
-            line = int(self.V*(decision_vector[self.V-1]-1) + decision_vector[i+1]-1)
-            fit += self.weight_list[line][1]
+                fit += self.edge_weight[int(decision_vector[i])][int(decision_vector[i+1])]
+            fit += self.edge_weight[int(decision_vector[self.dimention-1])][int(decision_vector[0])]
             fit *= -1
         return fit
 

@@ -8,7 +8,7 @@ from utils import Utils
 
 
 class MOEAD(object):
-    problem = TspProblem()
+    problem = None
     name = '' # 数据文件名称
     dim = 0 # 决策变量个数
     func_num = 0 # 目标函数个数
@@ -31,22 +31,18 @@ class MOEAD(object):
     save_point = ARG.SAVE_PIONT # 每过多少次迭代记录一次结果
     now_y = []
 
-    def __init__(self, problem:TspProblem, data_name:str, result_folder:str):
+    # 数据初始化
+    def __init__(self, problem:TspProblem, data_name:str, weight_list:np.ndarray, result_folder:str):
         self.problem = problem
         self.dim = problem.dimention
         self.func_num = problem.func_num
         self.GNO.set(self.func_num,self.dim)
         self.name = data_name
         self.weight_file_path = f"{ARG.DATA_FOLDER}{data_name}_weight.txt"
+        self.W = weight_list
+        self.pop_size = self.W.shape[0]
         self.result_folder = result_folder
-        self.init_data()
 
-    # 加载权重文件并初始化数据
-    def init_data(self):
-        W = np.loadtxt(fname=self.weight_file_path)
-        self.pop_size = W.shape[0]
-        self.W = W
-    
     # 保存结果
     def save_result(self,text=None):
         print("[info] start saving current solution in result file.")
@@ -108,26 +104,10 @@ def cpt_W_Bi_T(moead:MOEAD):
         Bi = moead.W[bi]
         dis = np.sum((moead.W-Bi)**2, axis=1)
         B_t = np.argsort(dis)
-        B_t = B_t[1:moead.neighbour_size+1]
+        B_t = B_t[1:moead.neighbour_size+1] # 第0个是自己（距离永远最小）
         moead.W_Bi_T.append(B_t)
     pass
 
-# 初始化Z集，设置理想点
-def init_z(moead:MOEAD):
-    dis = weight = 0
-    weight_list = moead.problem.weight_list
-    dis_index = np.argsort(weight_list[:,0])
-    dis_list = weight_list[dis_index][:,0]
-    pro_index = np.argsort(weight_list[:,1])[::-1]
-    pro_list = weight_list[pro_index][:,1]
-
-    for i in range(moead.problem.dimention+1):
-        dis += dis_list[i]
-        weight += pro_list[i]
-    weight *= -1
-    Z = [dis, weight]
-    moead.Z = Z
-    pass
 
 # 另一种初始化Z集的方法
 def init_z2(moead:MOEAD):
@@ -141,11 +121,27 @@ def init_z2(moead:MOEAD):
     pass
 
 
+# 计算初始化前沿
+def init_EP(moead:MOEAD):
+    for pi in range(moead.pop_size):
+        np = 0
+        F_V_P = moead.Pop_FV[pi]
+        for ppi in range(moead.pop_size):
+            F_V_PP = moead.Pop_FV[ppi]
+            if pi != ppi:
+                if Utils.is_dominate(F_V_PP, F_V_P):
+                    np += 1
+        if np == 0:
+            moead.EP_X_ID.append(pi)
+            moead.EP_X_FV.append(F_V_P[:])
+
+
 # 演化算法的主要流程
 def evolution(moead:MOEAD):
     cpt_W_Bi_T(moead)
     create_pop(moead)
     init_z2(moead)
+    init_EP(moead)
     # 开始迭代进化
     for gen in range(0,moead.max_eval+1):
         moead.cur_eval = gen

@@ -74,8 +74,8 @@ def save_checkpoint(iter,chromosome,result_folder,text=None):
 
 # NSGA-II 优化主要流程
 def nsga_ii_optimization(tsp_file, result_folder) :
-    DIM,node_position,dis_matrix,edge_weight_matrix = Reader.read_tsp_file(f"{ARG.DATA_FOLDER}{tsp_file}")
-    TSP_eval = TSPEvaluator(DIM,node_position,dis_matrix,edge_weight_matrix)
+    DIM,_,dis_matrix,edge_weight_matrix = Reader.read_tsp_file(f"{ARG.DATA_FOLDER}{tsp_file}")
+    TSP_eval = TSPEvaluator(DIM,dis_matrix,edge_weight_matrix)
 
     TSP_GNO = GeneOperator(EVLN, DIM, TSP_eval)
 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
         result_folder = f"{ARG.RESULT_FOLDER}{file_name}/"
         if not os.path.exists(result_folder):
             os.makedirs(result_folder)
-        with open(f"{result_folder}{file_name}_log.txt","w") as log_file:
+        with open(f"{result_folder}{file_name}.log","w") as log_file:
             sys.stdout = log_file
             nsga_ii_optimization(file, result_folder)
             sys.stdout = original_stdout

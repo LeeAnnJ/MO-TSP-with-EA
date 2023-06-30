@@ -37,8 +37,12 @@ if __name__ == '__main__':
         with open(f"{result_folder}{file_name}_log.txt","w") as log_file:
             sys.stdout = log_file
             dim,node_position,dis_matrix,edge_weight_matrix = Reader.read_tsp_file(data_file)
-            weight_list = Reader.write_weight_file(dim,dis_matrix,edge_weight_matrix,weight_file)
-            problem = TspProblem(ARG.M,dim,weight_list)
+            if ARG.REWRITE_WEIGHT:
+                weight_list = Reader.write_weight_file(ARG.POP,ARG.M,weight_file)
+            else:
+                weight_list = np.loadtxt(fname=weight_file)
+            # problem = TspProblem(ARG.M,dim,weight_list)
+            problem = TspProblem(ARG.M,dim,dis_matrix,edge_weight_matrix)
             moead = TspMoead(problem=problem,
                             result_folder=result_folder,
                             max_evaluation=ARG.EVAL_TIME,

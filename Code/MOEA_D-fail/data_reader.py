@@ -102,22 +102,19 @@ def read_tsp_file(file_name):
         print("[info]: edge_weight:\n",edge_weight_matrix)
         return dim,node_position,dis_matrix,edge_weight_matrix
 
-# 把原始数据文件改写成框架需要的权重文件
+
+# 生成算法需要的权重文件
 # 格式参考：https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
-# def write_weight_file(data_file,weight_file):
-def write_weight_file(dim,dis_matrix,edge_weight_matrix,weight_file):
-    # dim,node_position,dis_matrix,edge_weight_matrix = read_tsp_file(data_file)
-    weight_list = np.zeros((dim*dim,2))
-    for i in range(1,dim+1):
-        for j in range(1,dim+1):
-            line = (i-1)*dim+(j-1)
-            weight_list[line][0] = dis_matrix[i][j]
-            weight_list[line][1] = edge_weight_matrix[i][j]
+# todo: 修改权重向量
+def write_weight_file(solnum,m,weight_file):
+    random_vectors = np.random.rand(solnum,m)
+    weight_vectors=np.array([weight_vector/weight_vector.sum() for weight_vector in random_vectors])
+    print("[info] weight list in weight vectors:\n",weight_vectors)
     
     with open(weight_file,"w") as file:
-        for weight in weight_list:
-            file.write(f"{weight[0]} {weight[1]}\n")
-    return weight_list
+        for vector in weight_vectors:
+            file.write(f"{vector[0]} {vector[1]}\n")
+    return weight_vectors
 
 
 # for test

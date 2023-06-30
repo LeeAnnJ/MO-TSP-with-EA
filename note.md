@@ -24,6 +24,8 @@ NSGA-Ⅱ实现：https://github.com/tsoernes/multiobjective-tsp
 An effective method for solving multiple travelling salesman problem based on NSGA-II： https://www.tandfonline.com/doi/full/10.1080/21642583.2019.1674220?scroll=top&needAccess=true&role=tab&aria-labelledby=full-article  
 算法讲解：https://zhuanlan.zhihu.com/p/144807879
 
+- spea:[Zitzler et. al., 2001] Zitzler, Eckart, Marco Laumanns, and Lothar Thiele. “SPEA2: Improving the Strength Pareto Evolutionary Algorithm.” Zurich, Switzerland: ETH Zurich, 2001. https://doi.org/10.3929/ethz-a-004284029.
+
 
 ## chatgpt:
 
@@ -56,8 +58,8 @@ An effective method for solving multiple travelling salesman problem based on NS
 
 ## 目前的参数设置
 ### MOEA/D
-|文件|迭代次数|交叉概率|变异概率|
-|:--:|:--:|:--:|:--:|
+|文件|迭代次数|种群数量|交叉概率|变异概率|
+|:--:|:--:|:--:|:--:|:--:|
 |bayg29|100|0.9|0.5|
 |bays29|200|0.9|0.5|
 |dantzig42|500|0.9|0.5|
@@ -71,4 +73,4 @@ An effective method for solving multiple travelling salesman problem based on NS
 |bays29|200|50|0.9|0.3|
 |dantzig42|500|100|0.9|0.5|
 |gr120|1000|100|0.9|0.5|
-|pa561|1000|100|0.9|0.5|
+|pa561|2000|200|0.9|0.5|

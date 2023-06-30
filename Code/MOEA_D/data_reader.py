@@ -102,27 +102,33 @@ def read_tsp_file(file_name):
         print("[info]: edge_weight:\n",edge_weight_matrix)
         return dim,node_position,dis_matrix,edge_weight_matrix
 
-# 把原始数据文件改写成框架需要的权重文件
-# 按距离矩阵中下三角从左到右 从上到下的顺序存储每条边的距离和权重
+# 生成算法需要的权重文件
 # 格式参考：https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
-def write_weight_file(dim,dis_matrix,edge_weight_matrix,weight_file):
-    # dim,node_position,dis_matrix,edge_weight_matrix = read_tsp_file(data_file)
-    weight_list = np.zeros( (int(dim*(dim-1)/2), 2) )
-    count = 0
-    for i in range(2,dim+1):
-        for j in range(1,i):
-            weight_list[count][0] = dis_matrix[i][j]
-            weight_list[count][1] = edge_weight_matrix[i][j]
-            count += 1
+# todo: 修改权重向量
+def write_weight_file(solnum,dim,dis,pro,weight_file):
+    random_vectors = np.random.rand(solnum,2)
+    weight_vectors=np.array([weight_vector/weight_vector.sum() for weight_vector in random_vectors])
+
+    # dis_list = dis.flatten()
+    # dis_list = np.sort(np.unique(dis_list[dis_list!=0])) # 去掉0和重复的数字 再排序
+    # min_dis, max_dis = sum(dis_list[:dim]), sum(dis_list[-1*dim:])*0.75
+    # pro_list = pro.flatten()
+    # pro_list = np.unique(pro_list[pro_list!=0])
+    # min_pro, max_pro = sum(pro_list[:dim])*-1.5, sum(pro_list[-1*dim:])*-0.75
+    # print("[info] pro list:\n",pro_list)
+    # print("[info] min pro: ",min_pro,", max pro: ",max_pro)
+    # weight_vectors = [min_dis,max_pro]+weight_vectors*[max_dis-min_dis,min_pro-max_pro]
+    # print("[info] weight list in weight vectors:\n",weight_vectors)
     
     with open(weight_file,"w") as file:
-        for weight in weight_list:
-            file.write(f"{weight[0]} {weight[1]}\n")
-    return weight_list
+        for vector in weight_vectors:
+            file.write(f"{vector[0]} {vector[1]}\n")
+    return weight_vectors
 
 
 # for test
 if __name__ == '__main__':
-    dim,node_position,dis_matrix,edge_weight_matrix = read_tsp_file("../../Data/bays29.tsp")
+    # dim,node_position,dis_matrix,edge_weight_matrix = read_tsp_file("../../Data/bays29.tsp")
     # write_weight_file("../../Data/bays29.tsp","./output.txt")
-    write_weight_file(dim,dis_matrix,edge_weight_matrix,"./output.txt")
+    # write_weight_file(dim,dis_matrix,edge_weight_matrix,"./output.txt")
+    pass

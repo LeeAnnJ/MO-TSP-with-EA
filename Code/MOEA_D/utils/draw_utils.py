@@ -22,12 +22,12 @@ def draw_MOEAD_pareto(moead, name):
     plt.ylabel('profit(*-1)', fontsize=10)
     plt.title(name)
 
-    xmin = np.min(Pop_F_Data[:,0])
-    xmax = np.max(Pop_F_Data[:,0])
-    ymin = np.min(Pop_F_Data[:,1])
-    ymax = np.max(Pop_F_Data[:,1])
-    plt.xlim(xmin-20, xmax+20)
-    plt.ylim(ymin-20, ymax+20)
+    # xmin = np.min(Pop_F_Data[:,0])
+    # xmax = np.max(Pop_F_Data[:,0])
+    # ymin = np.min(Pop_F_Data[:,1])
+    # ymax = np.max(Pop_F_Data[:,1])
+    # plt.xlim(xmin-20, xmax+20)
+    # plt.ylim(ymin-20, ymax+20)
     # for pi, pp in enumerate(Pop_F_Data):
     #     plt.scatter(pp[0], pp[1], c='black', s=5)
     plt.scatter(Pop_F_Data[:,0], Pop_F_Data[:,1], c='black', s=5)
