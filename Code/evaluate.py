@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import pairwise_distances
 
-DATA_FILE = ["bayg29","bays29","dantzig42"]#,"gr120","pa561"] # ["bayg29","bays29","dantzig42","gr120","pa561"]
+DATA_FILE = ["bayg29","bays29","dantzig42","gr120","pa561"] # ["bayg29","bays29","dantzig42","gr120","pa561"]
 MAX_ITER = [200,200,1000,2000,2000] # 结果文件中的最大评估次数
 CHECK_POINT = [10,10,50,100,100]
 SPEA_RESULT_FOLDER = "../result/SPEA2/" # SPEA2结果文件夹

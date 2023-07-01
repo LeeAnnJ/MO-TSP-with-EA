@@ -50,7 +50,6 @@ An effective method for solving multiple travelling salesman problem based on NS
   - 数据文件名称
     - 每50/100次迭代的解集/函数评估结果
     - 帕累托前沿绘图结果(如果可以，每50/100次画一次)
-    - 最终的一个解决方案的绘图结果
     - log文件
   - 时间统计结果 
 - 解集评估结果
