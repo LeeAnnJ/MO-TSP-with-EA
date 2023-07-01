@@ -60,7 +60,7 @@ class SPEA2():
     def save_result(self, text, iter=-1):
         print("[info] start saving current solution in result file.")
         if iter!=-1:
-            csv_name = f"{self.result_folder}non_dominated_solutons_{iter}.csv"
+            csv_name = f"{self.result_folder}non_dominated_solution_{iter}.csv"
             pic_text = f"Pareto Front, iter: {iter}"
             pic_file = f"{self.result_folder}pic_iter_{iter}.png"
         else:

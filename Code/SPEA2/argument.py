@@ -6,9 +6,8 @@ RESULT_FOLDER = "../../result/SPEA2/" #结果文件夹
 # ---基本参数设置----
 FUNC_NUM = 2 # 目标函数个数
 POP  = 100 # 种群数量
-GEN  = 500 # 迭代次数
+GEN  = 1000 # 迭代次数
 SAVE_PIONT = 50 # 每隔多少次迭代记录一次结果
 EVLN = 2 # 目标函数数量
 P_CROSS = 0.9 # 交叉概率
-P_MUT = 0.5 # 变异概率
-TOUR = 2 # 锦标赛参赛选手个数
+P_MUT = 0.3 # 变异概率
